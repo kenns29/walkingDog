@@ -1,0 +1,31 @@
+1) Initial Eye position is at (1, 2, 30) looking at (0, 0, 0),
+   Light position is slightly top right of the eye, initial light position is defined by:
+	Eye position + (7, 10, 0)
+
+   Initially light will follow eye, press 'c' key will make the light stay fixed at its current position. Press 'c' key again will make the light reset to the initial offset with the eye and move with the eye afterwards.
+
+2) Dog's body is chrome material, legs are pearl, tails are polishedSilver.
+   Eyes, Ears, and Nose are ruby material with emission property set to {1.0, 0.3, 0.3, 0.0}
+   So they look slightly pink but glowing.
+
+3) Press 'F' key will make dog start to move, repeatedly pressing 'F' key will make dog move faster. Repeatedly Pressing 'D' key will make dog slow down until it stop.
+
+4) Press 'K' and 'L' will rotate the dog about its center. And press 'R' key will reset the dog to the origin, but won't reset the speed, so the dog will continue to move, and the angle of the dog remain the same.
+
+5) The ground mesh is drawn in Emerald material, cylinder mesh is drawn in ruby material.
+   Mesh are initally drawn in Mesh Mode. To make is display a solid cylinder and ground, Go to Menu->Mesh Display Mode -> Solid Mode
+
+6) All normal vectors have length 1/3. Ground normals are drawn in ruby, and cylinder normals are drawn in jade.
+
+7) In cylinder mesh, initially there are only 12 triangles in both base and top. But the number of triangles in the mesh can be increased by going to Menu->Change Cylinder Density->[choose the options].
+   The choices are 12, 18, 36, 72, which represents the number of triangles on both base and top of the cylinder.
+
+--------------
+In the Code:
+
+1) the class to draw the groundPlane is named Mesh
+   the class to draw the cylinder is called CylinderMesh, which is a sub class of Mesh class with an overriden setMesh() method
+
+2) the dog is drawn in tree data structure, which can be seen in the traverse(Sphere *r) method in the Dog class
+
+3) each mesh class contains a vector<Triangle> trigArray, which is an array of Triangle objects which also stores the per-face normal vectors. 
